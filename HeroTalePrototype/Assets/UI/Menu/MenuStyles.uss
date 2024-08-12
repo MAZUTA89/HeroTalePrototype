@@ -1,0 +1,13 @@
+.root-container {
+    flex-grow: 1;
+    align-items: center;
+    align-self: auto;
+    justify-content: center;
+}
+
+.menu-button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 20%;
+    height: 10%;
+}

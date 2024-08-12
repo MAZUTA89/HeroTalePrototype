@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Menu/MenuStyles.uss?fileID=7433441132597879392&amp;guid=809b18db2dab95c49a0400b3ec60a214&amp;type=3#MenuStyles" />
+    <ui:VisualElement name="VisualElement" class="root-container">
+        <ui:Button text="Start" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartButton" class="menu-button" />
+        <ui:Button text="Exit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ExitButton" class="menu-button" />
+    </ui:VisualElement>
+</ui:UXML>
