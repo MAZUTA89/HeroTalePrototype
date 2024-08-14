@@ -38,6 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Cloth
+    uniqueID: 1832158115
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Body
+    uniqueID: 3633780157
+    locked: 0
+  - name: Head
+    uniqueID: 1277746127
     locked: 0
