@@ -44,9 +44,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BodyBack
+    uniqueID: 3532092243
+    locked: 0
+  - name: Weapon
+    uniqueID: 168012745
+    locked: 0
+  - name: LeftHand
+    uniqueID: 1979593043
+    locked: 0
   - name: Body
-    uniqueID: 3633780157
+    uniqueID: 3595036571
     locked: 0
   - name: Head
-    uniqueID: 1277746127
+    uniqueID: 1586497095
     locked: 0
