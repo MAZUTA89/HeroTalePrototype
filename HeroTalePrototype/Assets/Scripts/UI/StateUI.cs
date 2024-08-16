@@ -13,6 +13,17 @@ namespace UI.StateUI
         public Image TimerImage => _timerImage;
         public GameObject PreparationIcon => _preparationIcon;
         public GameObject AttackIcon => _attackIcon;
+
+        public void ActivateAttackIcon()
+        {
+            _attackIcon.SetActive(true);
+            _preparationIcon.SetActive(false);
+        }
+        public void ActivatePrepareIcon()
+        {
+            _preparationIcon.SetActive(true);
+            _attackIcon?.SetActive(true);
+        }
     }
 }
 

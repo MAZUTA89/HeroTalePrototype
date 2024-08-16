@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace HTP.Machine
 { 
-    public class StateMachine<T>
+    public class StateMachine
     {
         IUnitState _currentState;
         IUnitState _lastState;

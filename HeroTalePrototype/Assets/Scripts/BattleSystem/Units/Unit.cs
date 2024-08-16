@@ -1,4 +1,5 @@
 ﻿using HTP.Machine;
+using HTP.Machine.States;
 using System;
 using System.Collections.Generic;
 using UI.StateUI;
@@ -15,6 +16,15 @@ namespace HTP.Units
         public IUnitSO UnitSO => _unitSO;
         public StateUI StateUI => _stateUI;
 
+        public IWeaponSO WeaponSO => Weapon;
+
+        public IUnitState BattlePreparationState => StatePreparation;
+
+        public IUnitState AttackState => StateAttack;
+        protected IWeaponSO Weapon;
+        protected IUnitState StatePreparation;
+        protected IUnitState StateAttack;
+
         Animator _animator;
         IUnitSO _unitSO;
         [Inject]
@@ -26,5 +36,9 @@ namespace HTP.Units
         {
             _animator = GetComponent<Animator>();
         }
+
+        public abstract void StartAttack();
+
+        public abstract void StartPrepare();
     }
 }

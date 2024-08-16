@@ -13,6 +13,8 @@ namespace HTP.Machine.States
         public override void Enter()
         {
             base.Enter();
+            Unit.StartPrepare();
+            StateUI.ActivatePrepareIcon();
         }
 
         public override void Perform()
@@ -23,8 +25,7 @@ namespace HTP.Machine.States
         protected override void OnEndTime()
         {
             base.OnEndTime();
-
-
+            StateMachine.ChangeState(Unit.AttackState);
         }
     }
 }

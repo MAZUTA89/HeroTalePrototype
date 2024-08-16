@@ -8,6 +8,8 @@ namespace HTP.Units
     {
         protected StateMachine StateMachine;
 
+       
+
         protected override void Start()
         {
             base.Start();
@@ -20,6 +22,14 @@ namespace HTP.Units
         private void Update()
         {
             StateMachine.Update();
+        }
+
+        public override void StartAttack()
+        {
+        }
+
+        public override void StartPrepare()
+        {
         }
     }
 }

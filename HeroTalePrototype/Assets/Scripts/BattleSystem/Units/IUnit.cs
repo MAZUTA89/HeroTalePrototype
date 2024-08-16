@@ -10,4 +10,11 @@ public interface IUnit
     Animator Animator { get; }
     IUnitSO UnitSO { get; }
     StateUI StateUI { get; }
+    IWeaponSO WeaponSO { get; }
+
+    IUnitState BattlePreparationState { get; }
+    IUnitState AttackState { get; }
+
+    void StartAttack();
+    void StartPrepare();
 }
