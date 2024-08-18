@@ -14,7 +14,7 @@ namespace HTP.Units
         [SerializeField] private StateUI _stateUI;
 
         public Animator Animator => _animator;
-        public IUnitSO UnitSO => _unitSO;
+        public IUnitSO UnitSO => UnitData;
         public StateUI StateUI => _stateUI;
 
         public Item Item => HandItem;
@@ -25,17 +25,31 @@ namespace HTP.Units
         protected Item HandItem;
         protected IUnitState StatePreparation;
         protected IUnitState StateAttack;
+        protected StateMachine StateMachine;
 
         Animator _animator;
-        IUnitSO _unitSO;
+        protected IUnitSO UnitData;
         [Inject]
         public void Construct(UnitSO unitSO)
         {
-            _unitSO = unitSO;
+            UnitData = unitSO;
         }
         protected virtual void Start()
         {
             _animator = GetComponent<Animator>();
+
+            StateMachine = new StateMachine();
+
+            StateMachine.Initialize(this);
+
+            StateAttack = new AttackState(StateMachine);
+            StatePreparation = new BattlePreparationState(StateMachine);
+
+            StateMachine.ChangeState(BattlePreparationState);
+        }
+        protected virtual void Update()
+        {
+            StateMachine.Update();
         }
 
         public virtual void StartAttack()

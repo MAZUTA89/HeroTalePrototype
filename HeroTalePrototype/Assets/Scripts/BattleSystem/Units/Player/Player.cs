@@ -8,7 +8,7 @@ namespace HTP.Units
 {
     public class Player : Unit
     {
-        protected StateMachine StateMachine;
+        
         public Inventory Inventory { get; private set; }
         public ItemHolder ItemHolder { get; private set; }
         IWeaponSO _lastWeapon;
@@ -26,20 +26,16 @@ namespace HTP.Units
         {
             base.Start();
 
-            StateMachine = new StateMachine();
+            //StateMachine = new StateMachine();
 
-            StateMachine.Initialize(this);
+            //StateMachine.Initialize(this);
 
-            StateAttack = new AttackState(StateMachine);
-            StatePreparation = new BattlePreparationState(StateMachine);
+            //StateAttack = new AttackState(StateMachine);
+            //StatePreparation = new BattlePreparationState(StateMachine);
 
-            StateMachine.ChangeState(BattlePreparationState);
+            //StateMachine.ChangeState(BattlePreparationState);
         }
-
-        private void Update()
-        {
-            StateMachine.Update();
-        }
+        
         public void ActivatePreparationState()
         {
             StateMachine.ChangeState(BattlePreparationState);
