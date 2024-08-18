@@ -47,7 +47,7 @@ namespace HTP.Units
         {
             Animator.SetTrigger("idle");
         }
-        public void SetItem(Item item)
+        public virtual void SetItem(Item item)
         {
             HandItem = item;
         }

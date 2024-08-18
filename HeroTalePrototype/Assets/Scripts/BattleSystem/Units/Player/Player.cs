@@ -11,7 +11,7 @@ namespace HTP.Units
         protected StateMachine StateMachine;
         public Inventory Inventory { get; private set; }
         public ItemHolder ItemHolder { get; private set; }
-
+        IWeaponSO _lastWeapon;
 
         [Inject]
         public void ConstructPlayer(Inventory inventory,
@@ -65,6 +65,17 @@ namespace HTP.Units
         public Inventory GetInventory()
         {
             return Inventory;
+        }
+        public override void SetItem(Item item)
+        {
+            if(Item != null && Item is IWeaponSO)
+            {
+                Inventory.AddItem(Item);
+                HandItem = null;
+            }
+            Inventory.RemoveItem(item);
+            HandItem = item;
+            ActivatePreparationState();
         }
     }
 }

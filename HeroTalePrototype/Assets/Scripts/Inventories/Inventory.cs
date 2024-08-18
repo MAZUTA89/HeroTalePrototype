@@ -33,6 +33,12 @@ namespace HTP.Inventories
         public void AddItem(Item item)
         {
             Items.Add(item);
+            _inventoryUI.UpdateUI(Items);
+        }
+        public void RemoveItem(Item item)
+        {
+            Items.Remove(item);
+            _inventoryUI.UpdateUI(Items);
         }
         public void SetPlayer(Player player)
         {
