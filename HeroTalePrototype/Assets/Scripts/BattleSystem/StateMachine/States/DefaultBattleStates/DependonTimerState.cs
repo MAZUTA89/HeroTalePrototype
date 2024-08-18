@@ -27,15 +27,15 @@ namespace HTP.Machine.States
         {
             base.Enter();
             TargetTime = Unit.UnitSO.PreparationTime;
-            ElapsedTime = TargetTime;
+            ElapsedTime = c_minFillAmount;
         }
 
         public override void Perform()
         {
             base.Perform();
-            ElapsedTime -= Time.deltaTime;
+            ElapsedTime += Time.deltaTime;
             _currentValue = Mathf.Lerp(c_maxFillAmount, c_minFillAmount,
-                TargetTime / ElapsedTime);
+                 ElapsedTime / TargetTime);
             TimerImage.fillAmount = _currentValue;
 
             if(_currentValue <= c_minFillAmount)

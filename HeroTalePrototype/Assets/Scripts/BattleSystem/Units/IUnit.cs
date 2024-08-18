@@ -1,3 +1,4 @@
+using HTP.Inventories;
 using HTP.Machine.States;
 using HTP.Units;
 using System.Collections;
@@ -10,7 +11,7 @@ public interface IUnit
     Animator Animator { get; }
     IUnitSO UnitSO { get; }
     StateUI StateUI { get; }
-    IWeaponSO WeaponSO { get; }
+    Item Item { get; }
 
     IUnitState BattlePreparationState { get; }
     IUnitState AttackState { get; }

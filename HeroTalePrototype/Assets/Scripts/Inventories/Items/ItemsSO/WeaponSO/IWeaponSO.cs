@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace HTP.Units
+namespace HTP.Inventories
 {
-    public interface IWeaponSO
+    public interface IWeaponSO : IItemSO
     {
-        string Id { get; }
         float Damage { get; }
         float Speed { get; }
     }

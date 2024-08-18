@@ -17,7 +17,7 @@ namespace HTP.Machine
         }
         public void ChangeState(IUnitState newState)
         {
-            _currentState.Exit();
+            _currentState?.Exit();
             newState.Enter();
             _lastState = _currentState;
             _currentState = newState;
