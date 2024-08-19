@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: OPlayer
   m_EditorClassIdentifier: 
   _id: Silver knight
-  _hp: 2
+  _hp: 246
   _armor: 2
-  _strength: 2
-  _preparationTime: 2
+  _strength: 11.4
+  _preparationTime: 1.5
   _unitPrefab: {fileID: 0}

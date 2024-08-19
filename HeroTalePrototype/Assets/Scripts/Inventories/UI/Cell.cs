@@ -24,7 +24,7 @@ namespace HTP.Inventories
         {
             
         }
-        private void Start()
+        protected virtual void Start()
         {
             _button = GetComponent<Button>();
             _button.onClick.AddListener(OnClick);

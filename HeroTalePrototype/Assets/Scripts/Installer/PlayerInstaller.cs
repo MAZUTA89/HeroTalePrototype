@@ -1,18 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using Zenject;
 using UnityEngine;
 using HTP.Units;
-using HTP.Inventories;
+using UI.StateUI;
 
 namespace HTP.Installers
 {
     public class PlayerInstaller : MonoInstaller
     {
         [SerializeField] private UnitSO _playerUnitSO;
+        [Space]
+        [SerializeField] private UnitInfoUI _playerInfoUI;
+        [SerializeField] private UnitInfoUI _enemyInfoUI;
+        
         public override void InstallBindings()
         {
-            Container.Bind<Unit>().To<Player>()
+            Container.BindInterfacesAndSelfTo<Player>()
                 .FromComponentInHierarchy()
                 .AsSingle();
             Container.BindInterfacesAndSelfTo<UnitSO>()
@@ -21,6 +24,17 @@ namespace HTP.Installers
             Container.Bind<ItemHolder>()
                 .FromComponentInChildren()
                 .AsSingle();
+
+            UnitsInfoUI unitsInfoUI = new UnitsInfoUI(_playerInfoUI, _enemyInfoUI);
+
+            Container.BindInstance(unitsInfoUI).AsSingle();
+
+            Container.BindInterfacesAndSelfTo<Enemy>()
+                .FromComponentInHierarchy()
+                .AsSingle();
+
+
+            //Container.Bind<GameUnits>().AsSingle();
         }
     }
 }

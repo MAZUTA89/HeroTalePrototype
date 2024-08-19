@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0df9c72e97109041a1499bed855242f, type: 3}
-  m_Name: Bronze_knight
+  m_Script: {fileID: 11500000, guid: 21da6bedb897eee45b37c1e57c8eec43, type: 3}
+  m_Name: Bronze_knight 1
   m_EditorClassIdentifier: 
   _id: Bronze knight
-  _hp: 2
+  _hp: 140
   _armor: 2
-  _strength: 2
+  _strength: 11.55
   _preparationTime: 2
   _unitPrefab: {fileID: 0}
+  Weapon: {fileID: 11400000, guid: c296ad7f95b9ba54bb1a92fe6b2ea18e, type: 2}

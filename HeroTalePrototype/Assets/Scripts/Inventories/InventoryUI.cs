@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 
 namespace HTP.Inventories
@@ -25,6 +26,7 @@ namespace HTP.Inventories
         }
         private void Start()
         {
+            
         }
         public void UpdateUI(List<Item> items)
         {

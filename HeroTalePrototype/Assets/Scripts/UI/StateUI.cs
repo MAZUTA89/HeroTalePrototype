@@ -22,7 +22,7 @@ namespace UI.StateUI
         public void ActivatePrepareIcon()
         {
             _preparationIcon.SetActive(true);
-            _attackIcon?.SetActive(true);
+            _attackIcon.SetActive(false);
         }
     }
 }

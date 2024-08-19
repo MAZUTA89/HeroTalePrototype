@@ -1,6 +1,5 @@
 ﻿using HTP.Inventories;
 using HTP.Machine;
-using HTP.Machine.States;
 using UnityEngine;
 using Zenject;
 
@@ -8,32 +7,26 @@ namespace HTP.Units
 {
     public class Player : Unit
     {
-        
         public Inventory Inventory { get; private set; }
         public ItemHolder ItemHolder { get; private set; }
         IWeaponSO _lastWeapon;
+        Enemy _enemy;
 
         [Inject]
         public void ConstructPlayer(Inventory inventory,
-            ItemHolder itemHolder)
+            ItemHolder itemHolder, Enemy enemy)
         {
             Inventory = inventory;
             ItemHolder = itemHolder;
             Inventory.SetPlayer(this);
+            _enemy = enemy;
         }
 
         protected override void Start()
         {
             base.Start();
-
-            //StateMachine = new StateMachine();
-
-            //StateMachine.Initialize(this);
-
-            //StateAttack = new AttackState(StateMachine);
-            //StatePreparation = new BattlePreparationState(StateMachine);
-
-            //StateMachine.ChangeState(BattlePreparationState);
+            UnitHealth.Initialize(UnitSO, UnitsInfoUI.PlayerInfo);
+            UnitsInfoUI.PlayerInfo.NameText.text = UnitSO.Id;
         }
         
         public void ActivatePreparationState()
@@ -50,14 +43,11 @@ namespace HTP.Units
         public override void StartAttack()
         {
             if (Item != null)
-            {
+            { 
                Animator.Play($"attack_{Item.Id}");
             }
         }
-        public void AnimationAttack()
-        {
-
-        }
+        
         public Inventory GetInventory()
         {
             return Inventory;
@@ -72,6 +62,15 @@ namespace HTP.Units
             Inventory.RemoveItem(item);
             HandItem = item;
             ActivatePreparationState();
+        }
+        public override void OnDealDamage()
+        {
+            base.OnDealDamage();
+
+            if(Item is IWeaponSO weapon)
+            {
+                _enemy.TakeDamage(GetDamage(weapon.Damage));
+            }
         }
     }
 }

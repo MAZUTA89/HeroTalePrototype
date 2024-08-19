@@ -29,10 +29,14 @@ namespace HTP.Units
 
         Animator _animator;
         protected IUnitSO UnitData;
+        protected UnitsInfoUI UnitsInfoUI;
+        public UnitHealth UnitHealth;
+
         [Inject]
-        public void Construct(UnitSO unitSO)
+        public void Construct(UnitSO unitSO, UnitsInfoUI unitsInfoUI)
         {
             UnitData = unitSO;
+            UnitsInfoUI = unitsInfoUI;
         }
         protected virtual void Start()
         {
@@ -46,6 +50,12 @@ namespace HTP.Units
             StatePreparation = new BattlePreparationState(StateMachine);
 
             StateMachine.ChangeState(BattlePreparationState);
+
+            UnitHealth = new UnitHealth();
+        }
+        
+        protected virtual void OnDisable()
+        {
         }
         protected virtual void Update()
         {
@@ -64,6 +74,21 @@ namespace HTP.Units
         public virtual void SetItem(Item item)
         {
             HandItem = item;
+        }
+        public virtual void OnDealDamage()
+        {
+            //Animator.Play("get_damage");
+        }
+        public virtual void TakeDamage(float damage)
+        {
+            UnitHealth.TakeDamage(damage / 
+                Mathf.Sqrt(UnitSO.Armor));
+            Animator.SetTrigger("get_damage");
+        }
+
+        protected float GetDamage(float itemDamage)
+        {
+            return itemDamage * Mathf.Sqrt(UnitSO.Strength);
         }
     }
 }

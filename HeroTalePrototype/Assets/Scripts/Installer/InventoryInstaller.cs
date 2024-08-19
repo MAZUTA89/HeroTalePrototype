@@ -21,6 +21,9 @@ namespace HTP.Installers
             Container.Bind<Cell>()
                 .FromComponentInHierarchy()
                 .AsTransient();
+            Container.BindInterfacesAndSelfTo<HudCell>()
+                .FromComponentInChildren()
+                .AsTransient();
         }
     }
 }
