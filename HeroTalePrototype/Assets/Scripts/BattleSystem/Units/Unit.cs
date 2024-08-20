@@ -1,4 +1,5 @@
-﻿using HTP.Inventories;
+﻿using HTP.BattleSystem;
+using HTP.Inventories;
 using HTP.Machine;
 using HTP.Machine.States;
 using System;
@@ -31,12 +32,14 @@ namespace HTP.Units
         protected IUnitSO UnitData;
         protected UnitsInfoUI UnitsInfoUI;
         public UnitHealth UnitHealth;
-
+        protected BattleService BattleService;
         [Inject]
-        public void Construct(UnitSO unitSO, UnitsInfoUI unitsInfoUI)
+        public void Construct(UnitSO unitSO, UnitsInfoUI unitsInfoUI,
+            BattleService battleService)
         {
             UnitData = unitSO;
             UnitsInfoUI = unitsInfoUI;
+            BattleService = battleService;
         }
         protected virtual void Start()
         {
@@ -52,6 +55,8 @@ namespace HTP.Units
             StateMachine.ChangeState(BattlePreparationState);
 
             UnitHealth = new UnitHealth();
+
+            StartPrepare();
         }
         
         protected virtual void OnDisable()

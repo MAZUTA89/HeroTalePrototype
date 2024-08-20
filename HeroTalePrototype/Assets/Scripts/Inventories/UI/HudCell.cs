@@ -23,5 +23,15 @@ namespace HTP.Inventories
             _item.SetPlayer(_player);
             Initialize(_item);
         }
+
+        protected override void OnClick()
+        {
+            if(_player.Item != null &&
+                _player.Item.Id == _item.Id)
+            {
+                return;
+            }
+            base.OnClick();
+        }
     }
 }

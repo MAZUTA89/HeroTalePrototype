@@ -10,6 +10,11 @@ namespace HTP.UI
     public class HudUI : MonoBehaviour
     {
         [SerializeField] Button _openInventoryButton;
+        [SerializeField] Button _startBattleButton;
+
+        public Button OpenInventoryButton => _openInventoryButton;
+        public Button StartBattleButton => _startBattleButton;
+
         InventoryUI _inventoryUI;
 
         [Inject]

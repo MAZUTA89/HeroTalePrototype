@@ -28,7 +28,14 @@ namespace HTP.Units
             UnitHealth.Initialize(UnitSO, UnitsInfoUI.PlayerInfo);
             UnitsInfoUI.PlayerInfo.NameText.text = UnitSO.Id;
         }
-        
+        protected override void Update()
+        {
+            if(BattleService.IsBattleHasStarted)
+            {
+                StateMachine.Update();
+            }
+        }
+
         public void ActivatePreparationState()
         {
             StateMachine.ChangeState(BattlePreparationState);
@@ -61,7 +68,11 @@ namespace HTP.Units
             }
             Inventory.RemoveItem(item);
             HandItem = item;
-            ActivatePreparationState();
+
+            if(BattleService.IsBattleHasStarted)
+            {
+                ActivatePreparationState();
+            }
         }
         public override void OnDealDamage()
         {

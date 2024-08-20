@@ -38,7 +38,7 @@ namespace HTP.Inventories
             _itemText.text = _item.DisplayId;
         }
 
-        void OnClick()
+        protected virtual void OnClick()
         {
             if(_item.ApplyCondition())
             {

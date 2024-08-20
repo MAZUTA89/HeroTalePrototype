@@ -11,6 +11,7 @@ namespace HTP.Units
         float Armor { get; }
         float Strength { get; }
         float PreparationTime { get; }
+        float SpawnChance { get; }
         GameObject UnitPrefab { get; }
     }
 }
