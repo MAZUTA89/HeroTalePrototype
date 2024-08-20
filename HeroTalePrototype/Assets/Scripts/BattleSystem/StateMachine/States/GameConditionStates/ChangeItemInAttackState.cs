@@ -1,26 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using static UnityEditor.Timeline.Actions.MenuPriority;
 
 namespace HTP.Machine.States
 {
-    public class AttackState : DependonTimerState
+    public class ChangeItemInAttackState : ChangeItemInPreparationState
     {
-        public AttackState(StateMachine stateMachine)
+        public ChangeItemInAttackState(StateMachine stateMachine)
             : base(stateMachine)
         {
-        }
-
-        public override void Enter()
-        {
-            base.Enter();
-            
-            StateUI.ActivateAttackIcon();
         }
 
         protected override void OnEndTime()
         {
             base.OnEndTime();
-            Unit.StartAttack();
+            Unit.Animator.Play($"take_{Unit.Item.Id})");
             StateMachine.ChangeState(Unit.BattlePreparationState);
         }
     }

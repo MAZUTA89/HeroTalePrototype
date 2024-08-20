@@ -1,27 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace HTP.Machine.States
 {
-    public class AttackState : DependonTimerState
+    public class ChangeItemInPreparationState : DependonTimerState
     {
-        public AttackState(StateMachine stateMachine)
+        public ChangeItemInPreparationState(StateMachine stateMachine)
             : base(stateMachine)
         {
         }
 
         public override void Enter()
         {
-            base.Enter();
-            
-            StateUI.ActivateAttackIcon();
+            TargetTime = 2;
+            ElapsedTime = c_minFillAmount;
         }
 
         protected override void OnEndTime()
         {
             base.OnEndTime();
-            Unit.StartAttack();
-            StateMachine.ChangeState(Unit.BattlePreparationState);
+            StateMachine.ChangeStateWithOutEnter(Unit.BattlePreparationState);
         }
     }
 }

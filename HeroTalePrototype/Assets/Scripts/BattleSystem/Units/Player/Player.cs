@@ -1,6 +1,7 @@
 ﻿using HTP.Inventories;
 using HTP.Machine;
 using HTP.Machine.States;
+using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 
@@ -16,6 +17,10 @@ namespace HTP.Units
 
         IWeaponSO _lastWeapon;
         DeadState _deadState;
+        ChangeItemInPreparationState _changeItemInPreparationState;
+        ChangeItemInAttackState _changeItemInAttackState;
+        bool _isChangeWeaponInAttackState;
+        Item newWeapon;
 
         [Inject]
         public void ConstructPlayer(Inventory inventory,
@@ -32,6 +37,10 @@ namespace HTP.Units
             UnitHealth.Initialize(UnitSO, UnitsInfoUI.PlayerInfo);
             UnitsInfoUI.PlayerInfo.NameText.text = UnitSO.Id;
             _deadState = new DeadState(StateMachine);
+            _changeItemInPreparationState = 
+                new ChangeItemInPreparationState(StateMachine);
+            _changeItemInAttackState =
+                new ChangeItemInAttackState(StateMachine);
         }
         protected override void Update()
         {
@@ -70,14 +79,37 @@ namespace HTP.Units
             if(Item != null && Item is IWeaponSO)
             {
                 Inventory.AddItem(Item);
-                HandItem = null;
+                //HandItem = null;
             }
-            Inventory.RemoveItem(item);
-            HandItem = item;
+            
 
+           
             if(BattleService.IsBattleHasStarted)
             {
-                ActivatePreparationState();
+                if (item is IWeaponSO)
+                {
+                    if(StateMachine.CurrentState is BattlePreparationState)
+                    {
+                        Inventory.RemoveItem(item);
+                        HandItem = item;
+                        Animator.Play($"take_{HandItem.Id}");
+                        StateMachine.ChangeState(_changeItemInPreparationState);
+                    }
+                    if(StateMachine.CurrentState is AttackState)
+                    {
+                        _isChangeWeaponInAttackState = true;
+                        Inventory.RemoveItem(item);
+                        newWeapon = item;
+                    }
+                }
+                //StateMachine.WaitAndAction(2, ActivatePreparationState);
+                //ActivatePreparationState();
+            }
+            else
+            {
+                Inventory.RemoveItem(item);
+                HandItem = item;
+                Animator.Play($"take_{HandItem.Id}");
             }
         }
         public override void OnDealDamage()
@@ -88,6 +120,7 @@ namespace HTP.Units
             {
                 BattleService.CurrentEnemy.TakeDamage(GetDamage(weapon.Damage));
             }
+            
         }
         public override void OnDeadAnimation()
         {
@@ -103,6 +136,16 @@ namespace HTP.Units
         public void OnLeave()
         {
             OnDeadAnimation();
+        }
+
+        public void OnEndAttackAnimation()
+        {
+            if (_isChangeWeaponInAttackState)
+            {
+                HandItem = newWeapon;
+                StateMachine.ChangeState(_changeItemInAttackState);
+                _isChangeWeaponInAttackState  = false;
+            }
         }
 
     }

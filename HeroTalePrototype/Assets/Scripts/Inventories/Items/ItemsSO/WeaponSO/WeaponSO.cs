@@ -16,7 +16,7 @@ namespace HTP.Inventories
 
         public override void Apply()
         {
-            Player.Animator.Play($"take_{Id}");
+            
             Player.SetItem(this);
         }
 

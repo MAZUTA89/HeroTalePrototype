@@ -34,21 +34,24 @@ namespace HTP.Machine.States
         public override void Perform()
         {
             base.Perform();
-            ElapsedTime += Time.deltaTime;
-            _currentValue = Mathf.Lerp(c_maxFillAmount, c_minFillAmount,
-                 ElapsedTime / TargetTime);
-            TimerImage.fillAmount = _currentValue;
 
+            FillTimer();
             if(_currentValue <= c_minFillAmount)
             {
                 ElapsedTime = TargetTime;
                 OnEndTime();
             }
         }
-
+        protected void FillTimer()
+        {
+            ElapsedTime += Time.deltaTime;
+            _currentValue = Mathf.Lerp(c_maxFillAmount, c_minFillAmount,
+                 ElapsedTime / TargetTime);
+            TimerImage.fillAmount = _currentValue;
+        }
         protected virtual void OnEndTime()
         {
-
+            
         }
 
 

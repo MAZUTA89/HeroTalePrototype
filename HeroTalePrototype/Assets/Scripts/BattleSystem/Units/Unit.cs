@@ -61,10 +61,10 @@ namespace HTP.Units
         protected virtual void Update()
         {
             
-            if (BattleService.IsBattleHasStarted)
-            {
+            //if (BattleService.IsBattleHasStarted)
+            //{
                 StateMachine.Update();
-            }
+            //}
         }
 
         public virtual void StartAttack()
