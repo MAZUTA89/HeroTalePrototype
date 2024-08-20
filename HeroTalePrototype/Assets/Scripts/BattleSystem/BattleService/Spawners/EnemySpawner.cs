@@ -33,7 +33,6 @@ namespace HTP.BattleSystem
                 {
                     return factory.Create();
                 }
-                break;
             }
 
             return null;

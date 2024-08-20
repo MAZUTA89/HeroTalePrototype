@@ -8,8 +8,6 @@ namespace HTP.Installers
 {
     public class PlayerInstaller : MonoInstaller
     {
-        [SerializeField] private UnitSO _playerUnitSO;
-        [Space]
         [SerializeField] private UnitInfoUI _playerInfoUI;
         [SerializeField] private UnitInfoUI _enemyInfoUI;
         
@@ -18,8 +16,7 @@ namespace HTP.Installers
             Container.BindInterfacesAndSelfTo<Player>()
                 .FromComponentInHierarchy()
                 .AsSingle();
-            Container.BindInterfacesAndSelfTo<UnitSO>()
-                .FromInstance(_playerUnitSO);
+           
 
             Container.Bind<ItemHolder>()
                 .FromComponentInChildren()
@@ -29,10 +26,7 @@ namespace HTP.Installers
 
             Container.BindInstance(unitsInfoUI).AsSingle();
 
-            Container.BindInterfacesAndSelfTo<Enemy>()
-                .FromComponentInHierarchy()
-                .AsSingle();
-
+            Container.BindInterfacesAndSelfTo<Enemy>().AsTransient();
 
             //Container.Bind<GameUnits>().AsSingle();
         }

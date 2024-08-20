@@ -1,5 +1,6 @@
 ﻿using HTP.Inventories;
 using HTP.Machine;
+using HTP.Machine.States;
 using UnityEngine;
 using Zenject;
 
@@ -7,9 +8,14 @@ namespace HTP.Units
 {
     public class Player : Unit
     {
+        [SerializeField] UnitSO _unitSO;
         public Inventory Inventory { get; private set; }
         public ItemHolder ItemHolder { get; private set; }
+
+        public override IUnitSO UnitSO => _unitSO;
+
         IWeaponSO _lastWeapon;
+        DeadState _deadState;
 
         [Inject]
         public void ConstructPlayer(Inventory inventory,
@@ -25,6 +31,7 @@ namespace HTP.Units
             base.Start();
             UnitHealth.Initialize(UnitSO, UnitsInfoUI.PlayerInfo);
             UnitsInfoUI.PlayerInfo.NameText.text = UnitSO.Id;
+            _deadState = new DeadState(StateMachine);
         }
         protected override void Update()
         {
@@ -85,7 +92,17 @@ namespace HTP.Units
         public override void OnDeadAnimation()
         {
             BattleService.OnEndBattle();
-            StartPrepare();
+            StateMachine.ChangeState(_deadState);
+        }
+
+        public void OnStartBattle()
+        {
+            StateMachine.ChangeState(BattlePreparationState);
+        }
+
+        public void OnLeave()
+        {
+            OnDeadAnimation();
         }
 
     }

@@ -1,6 +1,7 @@
 ﻿using HTP.Inventories;
 using System;
 using System.Collections.Generic;
+using UI.StateUI;
 using UnityEngine;
 using Zenject;
 
@@ -8,17 +9,22 @@ namespace HTP.Units
 {
     public class Enemy : Unit
     {
-        [SerializeField] private EnemyUnitSO _unitSO;
-
+        [SerializeField] EnemyUnitSO _enemyUnitSO;
+        UnitInfoUI _enemyInfoUI;
         protected override void Start()
         {
-            UnitData = _unitSO;
             base.Start();
             UnitHealth.Initialize(UnitSO, UnitsInfoUI.EnemyInfo);
-            UnitsInfoUI.EnemyInfo.NameText.text = UnitSO.Id;
+            _enemyInfoUI = UnitsInfoUI.EnemyInfo;
+            _enemyInfoUI.gameObject.SetActive(true);
+            _enemyInfoUI.NameText.text = UnitSO.Id;
+            StateMachine.ChangeState(BattlePreparationState);
         }
 
         protected Player Player;
+
+        public override IUnitSO UnitSO => _enemyUnitSO;
+
         [Inject]
         public void ConstructEnemy(Player player)
         {
@@ -30,7 +36,7 @@ namespace HTP.Units
             base.OnDealDamage();
 
             //Player.UnitHealth.TakeDamage(_unitSO.Weapon.Damage);
-            Player.TakeDamage(_unitSO.Weapon.Damage);
+            Player.TakeDamage(_enemyUnitSO.Weapon.Damage);
         }
 
         public override void OnDeadAnimation()
@@ -40,9 +46,11 @@ namespace HTP.Units
             BattleService.OnEnemyDead();
         }
 
-        public float GetSpawnChance()
+
+        private void OnDestroy()
         {
-            return _unitSO.SpawnChance;
+            
         }
+
     }
 }

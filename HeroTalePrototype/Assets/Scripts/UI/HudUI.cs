@@ -11,9 +11,13 @@ namespace HTP.UI
     {
         [SerializeField] Button _openInventoryButton;
         [SerializeField] Button _startBattleButton;
+        [SerializeField] Button _leaveBattleButton;
+        [SerializeField] GameObject _healingButton;
 
         public Button OpenInventoryButton => _openInventoryButton;
         public Button StartBattleButton => _startBattleButton;
+        public Button LeaveBattleButton => _leaveBattleButton;
+        public GameObject HealingObject => _healingButton;
 
         InventoryUI _inventoryUI;
 
@@ -31,6 +35,11 @@ namespace HTP.UI
         private void OnDisable()
         {
             _openInventoryButton.onClick.RemoveListener(OnOpenInventory);
+        }
+        private void Start()
+        {
+            StartBattleButton.gameObject.SetActive(true);
+            LeaveBattleButton.gameObject.SetActive(false);
         }
 
         void OnOpenInventory()

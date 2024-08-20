@@ -29,6 +29,7 @@ namespace HTP.Inventories
             {
                 item.SetPlayer(_player);
             }
+            _inventoryUI.gameObject.SetActive(false);
         }
         public void AddItem(Item item)
         {

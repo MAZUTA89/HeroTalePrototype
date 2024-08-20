@@ -17,5 +17,6 @@ MonoBehaviour:
   _armor: 1
   _strength: 4.27
   _preparationTime: 2.8
+  _spawnChance: 100
   _unitPrefab: {fileID: 0}
   Weapon: {fileID: 11400000, guid: d551bdcbbaff24b4d86e2f1c3a410cbc, type: 2}

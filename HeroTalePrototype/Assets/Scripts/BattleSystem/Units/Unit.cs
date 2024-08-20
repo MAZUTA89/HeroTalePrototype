@@ -15,7 +15,7 @@ namespace HTP.Units
         [SerializeField] private StateUI _stateUI;
 
         public Animator Animator => _animator;
-        public IUnitSO UnitSO => UnitData;
+        public abstract IUnitSO UnitSO { get; }
         public StateUI StateUI => _stateUI;
 
         public Item Item => HandItem;
@@ -29,15 +29,13 @@ namespace HTP.Units
         protected StateMachine StateMachine;
 
         Animator _animator;
-        protected IUnitSO UnitData;
         protected UnitsInfoUI UnitsInfoUI;
         public UnitHealth UnitHealth;
         protected BattleService BattleService;
         [Inject]
-        public void Construct(UnitSO unitSO, UnitsInfoUI unitsInfoUI,
+        public void Construct(UnitsInfoUI unitsInfoUI,
             BattleService battleService)
         {
-            UnitData = unitSO;
             UnitsInfoUI = unitsInfoUI;
             BattleService = battleService;
         }
@@ -52,8 +50,6 @@ namespace HTP.Units
             StateAttack = new AttackState(StateMachine);
             StatePreparation = new BattlePreparationState(StateMachine);
 
-            StateMachine.ChangeState(BattlePreparationState);
-
             UnitHealth = new UnitHealth();
 
             StartPrepare();
@@ -64,11 +60,7 @@ namespace HTP.Units
         }
         protected virtual void Update()
         {
-            if (UnitHealth.IsAlive == false)
-            {
-                OnDead();
-                return;
-            }
+            
             if (BattleService.IsBattleHasStarted)
             {
                 StateMachine.Update();
@@ -97,6 +89,10 @@ namespace HTP.Units
             UnitHealth.TakeDamage(damage /
                 Mathf.Sqrt(UnitSO.Armor));
             Animator.SetTrigger("get_damage");
+            if (UnitHealth.IsAlive == false)
+            {
+                OnDead();
+            }
         }
 
         protected float GetDamage(float itemDamage)
@@ -111,5 +107,7 @@ namespace HTP.Units
         {
             Destroy(gameObject);
         }
+
+
     }
 }

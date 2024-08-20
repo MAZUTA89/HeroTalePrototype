@@ -18,7 +18,7 @@ namespace HTP.Units
         {
             get
             { 
-                return _maxHealth;
+                return _currentHealth;
             }
             set
             {

@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stateUI: {fileID: 4813675706023843103}
-  _unitSO: {fileID: 11400000, guid: 2991c20794cc5724285254e26a0c3c7b, type: 2}
+  _enemyUnitSO: {fileID: 11400000, guid: 2991c20794cc5724285254e26a0c3c7b, type: 2}
 --- !u!1 &3004006217245442071
 GameObject:
   m_ObjectHideFlags: 0

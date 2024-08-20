@@ -16,5 +16,6 @@ MonoBehaviour:
   _hp: 246
   _armor: 2
   _strength: 11.4
-  _preparationTime: 1.5
+  _preparationTime: 2
+  _spawnChance: 20
   _unitPrefab: {fileID: 0}

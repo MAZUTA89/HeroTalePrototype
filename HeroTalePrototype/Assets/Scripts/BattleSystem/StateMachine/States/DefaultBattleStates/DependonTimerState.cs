@@ -8,8 +8,8 @@ namespace HTP.Machine.States
 {
     public class DependonTimerState : UnitState
     {
-        const float c_maxFillAmount = 1;
-        const float c_minFillAmount = 0;
+        protected const float c_maxFillAmount = 1;
+        protected const float c_minFillAmount = 0;
         protected float TargetTime;
         protected float ElapsedTime;
         protected StateUI StateUI;
@@ -28,6 +28,7 @@ namespace HTP.Machine.States
             base.Enter();
             TargetTime = Unit.UnitSO.PreparationTime;
             ElapsedTime = c_minFillAmount;
+            StateUI.gameObject.SetActive(true);
         }
 
         public override void Perform()

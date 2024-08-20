@@ -24,7 +24,8 @@ namespace HTP.BattleSystem
         public Enemy Create()
         {
             return _instantiator.InstantiatePrefabForComponent<Enemy>
-                (_template, _spawnPoint, null);
+                (_template, _spawnPoint.position, _template.transform.rotation,
+                null);
         }
     }
 }
