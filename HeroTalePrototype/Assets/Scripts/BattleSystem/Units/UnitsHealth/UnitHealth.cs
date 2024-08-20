@@ -6,8 +6,13 @@ namespace HTP.Units
 {
     public class UnitHealth
     {
-        public event Action OnTakeDamageEvent;
-
+        public bool IsAlive
+        {
+            get
+            {
+                return _currentHealth != 0;
+            }
+        }
         float _maxHealth;
         public float Health
         {
@@ -17,10 +22,10 @@ namespace HTP.Units
             }
             set
             {
-                _maxHealth = value;
-                if(_maxHealth < 0)
+                _currentHealth = value;
+                if(_currentHealth < 0)
                 {
-                    _maxHealth = 0;
+                    _currentHealth = 0;
                 }
             }
         }
@@ -46,7 +51,6 @@ namespace HTP.Units
         {
             Health -= damage;
             _unitInfoUI.SetHealthValue(Health);
-            OnTakeDamageEvent?.Invoke();
         }
 
         public void HealHP(float hp)

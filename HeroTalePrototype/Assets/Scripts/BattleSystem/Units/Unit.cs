@@ -58,13 +58,21 @@ namespace HTP.Units
 
             StartPrepare();
         }
-        
+
         protected virtual void OnDisable()
         {
         }
         protected virtual void Update()
         {
-            StateMachine.Update();
+            if (UnitHealth.IsAlive == false)
+            {
+                OnDead();
+                return;
+            }
+            if (BattleService.IsBattleHasStarted)
+            {
+                StateMachine.Update();
+            }
         }
 
         public virtual void StartAttack()
@@ -86,7 +94,7 @@ namespace HTP.Units
         }
         public virtual void TakeDamage(float damage)
         {
-            UnitHealth.TakeDamage(damage / 
+            UnitHealth.TakeDamage(damage /
                 Mathf.Sqrt(UnitSO.Armor));
             Animator.SetTrigger("get_damage");
         }
@@ -94,6 +102,14 @@ namespace HTP.Units
         protected float GetDamage(float itemDamage)
         {
             return itemDamage * Mathf.Sqrt(UnitSO.Strength);
+        }
+        protected virtual void OnDead()
+        {
+            Animator.SetTrigger("dead");
+        }
+        public virtual void OnDeadAnimation()
+        {
+            Destroy(gameObject);
         }
     }
 }

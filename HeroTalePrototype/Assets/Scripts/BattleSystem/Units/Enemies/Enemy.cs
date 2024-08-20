@@ -32,5 +32,17 @@ namespace HTP.Units
             //Player.UnitHealth.TakeDamage(_unitSO.Weapon.Damage);
             Player.TakeDamage(_unitSO.Weapon.Damage);
         }
+
+        public override void OnDeadAnimation()
+        {
+            base.OnDeadAnimation();
+
+            BattleService.OnEnemyDead();
+        }
+
+        public float GetSpawnChance()
+        {
+            return _unitSO.SpawnChance;
+        }
     }
 }

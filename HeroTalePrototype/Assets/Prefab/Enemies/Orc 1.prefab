@@ -72,7 +72,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1035636917430761834}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1146510132748799532}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -240,7 +240,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3342866865211122214}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -317,7 +317,7 @@ Transform:
   - {fileID: 6212750411994214079}
   - {fileID: 8193415900421958417}
   m_Father: {fileID: 7885799054881255667}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -17.762127}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -5.503728}
 --- !u!1 &3614554054501053617
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,7 +357,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3614554054501053617}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -452,7 +452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7627641647279924603
 Transform:
   m_ObjectHideFlags: 0
@@ -553,7 +553,7 @@ Transform:
   m_Children:
   - {fileID: 1683927587978947102}
   m_Father: {fileID: 7627641647279924603}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -102.51943}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -11.28958}
 --- !u!1 &4959844867239868591
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,7 +593,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4959844867239868591}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -677,7 +677,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5920369159740965479}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -756,7 +756,7 @@ Transform:
   - {fileID: 6597334507676148834}
   - {fileID: 978991248529339307}
   m_Father: {fileID: 7627641647279924603}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 79.43667}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -176.93037}
 --- !u!1 &6923565454850851111
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,7 +796,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6923565454850851111}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -873,7 +873,7 @@ Transform:
   - {fileID: 3083258101419936359}
   - {fileID: 987354281020268669}
   m_Father: {fileID: 7885799054881255667}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -155.23549}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 162.96626}
 --- !u!1 &7141399716509166374
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,7 +906,7 @@ Transform:
   - {fileID: 5671976317222334390}
   - {fileID: 3467051417803890854}
   m_Father: {fileID: 7885799054881255667}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 122.262215}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 174.16936}
 --- !u!1 &7996371014201096713
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,7 +946,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7996371014201096713}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1030,7 +1030,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8963749945196796393}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1115,7 +1115,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8996832784914384050}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1216,7 +1216,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9072450398501614107}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1292,7 +1292,7 @@ Transform:
   m_Children:
   - {fileID: 8876793220818908616}
   m_Father: {fileID: 7627641647279924603}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -10.435206}
 --- !u!1001 &7045211596494904798
 PrefabInstance:
   m_ObjectHideFlags: 0

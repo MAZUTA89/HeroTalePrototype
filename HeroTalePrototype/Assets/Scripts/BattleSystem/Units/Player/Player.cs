@@ -10,16 +10,14 @@ namespace HTP.Units
         public Inventory Inventory { get; private set; }
         public ItemHolder ItemHolder { get; private set; }
         IWeaponSO _lastWeapon;
-        Enemy _enemy;
 
         [Inject]
         public void ConstructPlayer(Inventory inventory,
-            ItemHolder itemHolder, Enemy enemy)
+            ItemHolder itemHolder)
         {
             Inventory = inventory;
             ItemHolder = itemHolder;
             Inventory.SetPlayer(this);
-            _enemy = enemy;
         }
 
         protected override void Start()
@@ -30,10 +28,11 @@ namespace HTP.Units
         }
         protected override void Update()
         {
-            if(BattleService.IsBattleHasStarted)
-            {
-                StateMachine.Update();
-            }
+            base.Update();
+            //if(BattleService.IsBattleHasStarted)
+            //{
+            //    base.Update();
+            //}
         }
 
         public void ActivatePreparationState()
@@ -80,8 +79,14 @@ namespace HTP.Units
 
             if(Item is IWeaponSO weapon)
             {
-                _enemy.TakeDamage(GetDamage(weapon.Damage));
+                BattleService.CurrentEnemy.TakeDamage(GetDamage(weapon.Damage));
             }
         }
+        public override void OnDeadAnimation()
+        {
+            BattleService.OnEndBattle();
+            StartPrepare();
+        }
+
     }
 }

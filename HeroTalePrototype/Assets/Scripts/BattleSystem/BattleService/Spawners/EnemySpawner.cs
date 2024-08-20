@@ -12,7 +12,7 @@ namespace HTP.BattleSystem
             _enemyFactories = enemyFactories;
         }
 
-        public void Spawn()
+        public Enemy Spawn()
         {
             float totalWeight = 0;
 
@@ -31,11 +31,12 @@ namespace HTP.BattleSystem
 
                 if(randomWeight < currentWeight)
                 {
-                    factory.Create();
+                    return factory.Create();
                 }
                 break;
             }
 
+            return null;
         }
 
     }
