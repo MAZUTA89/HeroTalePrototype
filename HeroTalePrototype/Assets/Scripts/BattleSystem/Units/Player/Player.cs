@@ -81,7 +81,11 @@ namespace HTP.Units
                 Inventory.AddItem(Item);
                 //HandItem = null;
             }
-           
+           if(StateMachine.CurrentState is 
+                ChangeItemInPreparationState)
+            {
+                return;
+            }
             if(BattleService.IsBattleHasStarted)
             {
                 if (item is IWeaponSO)
@@ -90,6 +94,7 @@ namespace HTP.Units
                     {
                         Inventory.RemoveItem(item);
                         HandItem = item;
+                        ItemHolder.DeactivateCurrent();
                         Animator.Play($"take_{HandItem.Id}");
                         StateMachine.ChangeState(ChangeItemInPreparationState);
                     }
@@ -103,6 +108,7 @@ namespace HTP.Units
                     {
                         Inventory.RemoveItem(item);
                         HandItem = item;
+                        ItemHolder.DeactivateCurrent();
                         Animator.Play($"take_{HandItem.Id}");
                     }
                     
@@ -112,6 +118,7 @@ namespace HTP.Units
             {
                 Inventory.RemoveItem(item);
                 HandItem = item;
+                ItemHolder.DeactivateCurrent();
                 Animator.Play($"take_{HandItem.Id}");
             }
         }
@@ -148,6 +155,7 @@ namespace HTP.Units
         public void ChangeWeapon()
         {
             HandItem = newWeapon;
+            ItemHolder.DeactivateCurrent();
             Animator.Play($"take_{HandItem.Id}");
             newWeapon = null;
             IsChangeWeaponInAttackState = false;

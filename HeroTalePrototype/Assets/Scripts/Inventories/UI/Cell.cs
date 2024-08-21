@@ -12,10 +12,10 @@ namespace HTP.Inventories
     public class Cell : MonoBehaviour
     {
         Button _button;
-        [SerializeField] private Image Icon;
+        [SerializeField] protected Image Icon;
         [SerializeField] private TextMeshProUGUI _itemText;
 
-        IItemSO _item;
+        protected IItemSO Item;
 
         private void OnEnable()
         {
@@ -28,21 +28,20 @@ namespace HTP.Inventories
         {
             _button = GetComponent<Button>();
             _button.onClick.AddListener(OnClick);
-
         }
 
-        public void Initialize(IItemSO item)
+        public virtual void Initialize(IItemSO item)
         {
-            _item = item;
-            Icon.sprite = _item.Icon;
-            _itemText.text = _item.DisplayId;
+            Item = item;
+            Icon.sprite = Item.Icon;
+            _itemText.text = Item.DisplayId;
         }
 
         protected virtual void OnClick()
         {
-            if(_item.ApplyCondition())
+            if(Item.ApplyCondition())
             {
-                _item.Apply();
+                Item.Apply();
             }
         }
         

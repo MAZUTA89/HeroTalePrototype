@@ -19,8 +19,9 @@ namespace HTP.Inventories
         }
         protected override void Start()
         {
-            base.Start();
             _item.SetPlayer(_player);
+            Item = _item;
+            base.Start();
             Initialize(_item);
         }
 
@@ -32,6 +33,11 @@ namespace HTP.Inventories
                 return;
             }
             base.OnClick();
+        }
+
+        public override void Initialize(IItemSO item)
+        {
+            Icon.sprite = _item.Icon;
         }
     }
 }
