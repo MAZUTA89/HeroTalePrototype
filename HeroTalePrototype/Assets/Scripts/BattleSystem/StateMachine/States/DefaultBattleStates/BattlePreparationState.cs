@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HTP.Inventories;
+using System;
 using System.Collections.Generic;
 
 namespace HTP.Machine.States

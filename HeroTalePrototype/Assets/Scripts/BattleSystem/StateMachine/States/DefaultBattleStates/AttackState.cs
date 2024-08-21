@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HTP.Inventories;
+using System;
 using System.Collections.Generic;
 
 namespace HTP.Machine.States
@@ -15,6 +16,12 @@ namespace HTP.Machine.States
             base.Enter();
             
             StateUI.ActivateAttackIcon();
+            if (Unit.Item is WeaponSO weapon)
+            {
+                TargetTime = Unit.UnitSO.PreparationTime / (1 +
+                    Unit.UnitSO.WeaponSpeedInfluenceRatio *
+                    weapon.Speed);
+            }
         }
 
         protected override void OnEndTime()

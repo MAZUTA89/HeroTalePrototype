@@ -10,6 +10,7 @@ namespace HTP.Units
         float Strength { get; }
         float PreparationTime { get; }
         float SpawnChance { get; }
+        float WeaponSpeedInfluenceRatio { get; }
     }
 }
 

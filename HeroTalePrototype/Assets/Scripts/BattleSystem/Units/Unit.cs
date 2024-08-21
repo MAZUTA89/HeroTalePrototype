@@ -81,7 +81,6 @@ namespace HTP.Units
         }
         public virtual void OnDealDamage()
         {
-            //Animator.Play("get_damage");
         }
         public virtual void TakeDamage(float damage)
         {
