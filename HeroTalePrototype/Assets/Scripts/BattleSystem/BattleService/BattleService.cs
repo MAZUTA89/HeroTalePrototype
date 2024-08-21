@@ -78,6 +78,7 @@ namespace HTP.BattleSystem
             Destroy(CurrentEnemy.gameObject);
             _enemyInfoUI.gameObject.SetActive(false);
             _healingObject.gameObject.SetActive(true);
+            _leaveBattleButton.gameObject.SetActive(false);
         }
 
         public void OnEnemyDead()

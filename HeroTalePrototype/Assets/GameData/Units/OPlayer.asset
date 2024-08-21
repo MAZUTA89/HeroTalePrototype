@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OPlayer
   m_EditorClassIdentifier: 
   _id: Silver knight
-  _hp: 246
+  _hp: 77
   _armor: 2
   _strength: 11.4
   _preparationTime: 2

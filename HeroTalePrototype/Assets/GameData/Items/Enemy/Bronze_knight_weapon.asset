@@ -15,5 +15,5 @@ MonoBehaviour:
   _id: 
   _displayId: 
   _icon: {fileID: 0}
-  _damage: 21
+  _damage: 24
   _speed: 1.33

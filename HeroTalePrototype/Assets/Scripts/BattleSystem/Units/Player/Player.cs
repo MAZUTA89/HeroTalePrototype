@@ -162,5 +162,12 @@ namespace HTP.Units
             IsChangeWeaponInAttackState = false;
         }
 
+        //protected override void OnDead()
+        //{
+        //    base.OnDead();
+
+        //    OnDeadAnimation();
+        //}
+
     }
 }
