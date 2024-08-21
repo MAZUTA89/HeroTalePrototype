@@ -12,11 +12,9 @@ namespace HTP.Units
 {
     public abstract class Unit : MonoBehaviour, IUnit
     {
-        [SerializeField] private StateUI _stateUI;
-
         public Animator Animator => _animator;
         public abstract IUnitSO UnitSO { get; }
-        public StateUI StateUI => _stateUI;
+        public StateUI StateUI => UnitStateUI;
 
         public Item Item => HandItem;
 
@@ -31,6 +29,7 @@ namespace HTP.Units
         Animator _animator;
         protected UnitsInfoUI UnitsInfoUI;
         public UnitHealth UnitHealth;
+        protected StateUI UnitStateUI;
         protected BattleService BattleService;
         [Inject]
         public void Construct(UnitsInfoUI unitsInfoUI,

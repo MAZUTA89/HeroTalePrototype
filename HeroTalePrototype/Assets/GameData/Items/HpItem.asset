@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: HpItem
   m_EditorClassIdentifier: 
   _id: heal
-  _displayId: Healing
+  _displayId: Heal
   _icon: {fileID: 21300000, guid: 5da159f07e7593e41b12f2b2a0aaadf3, type: 3}
   HP: 30.7

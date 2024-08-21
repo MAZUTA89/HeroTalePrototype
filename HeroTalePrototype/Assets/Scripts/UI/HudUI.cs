@@ -13,11 +13,13 @@ namespace HTP.UI
         [SerializeField] Button _startBattleButton;
         [SerializeField] Button _leaveBattleButton;
         [SerializeField] GameObject _healingButton;
+        [SerializeField] Button _exitButton;
 
         public Button OpenInventoryButton => _openInventoryButton;
         public Button StartBattleButton => _startBattleButton;
         public Button LeaveBattleButton => _leaveBattleButton;
         public GameObject HealingObject => _healingButton;
+        public Button ExitButton => _exitButton;
 
         InventoryUI _inventoryUI;
 

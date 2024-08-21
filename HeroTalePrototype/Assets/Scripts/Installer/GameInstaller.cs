@@ -1,10 +1,10 @@
 ﻿using HTP.BattleSystem;
 using HTP.UI;
-using System;
 using System.Collections.Generic;
 using Zenject;
 using UnityEngine;
 using HTP.Units;
+using HTP.SceneControls;
 
 namespace HTP.Installers
 {
@@ -19,6 +19,13 @@ namespace HTP.Installers
                 .AsSingle();
 
             Container.Bind<HudUI>()
+                .FromComponentInHierarchy()
+                .AsSingle();
+
+            Container.Bind<AlignWithScreenPoint>()
+                .AsTransient();
+
+            Container.Bind<GameSceneController>()
                 .FromComponentInHierarchy()
                 .AsSingle();
 

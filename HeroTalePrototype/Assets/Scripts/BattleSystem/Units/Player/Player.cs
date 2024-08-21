@@ -1,6 +1,7 @@
 ﻿using HTP.Inventories;
 using HTP.Machine;
 using HTP.Machine.States;
+using UI.StateUI;
 using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
@@ -20,6 +21,7 @@ namespace HTP.Units
         public ChangeItemInPreparationState ChangeItemInPreparationState { get; private set; }
         public ChangeItemInAttackState ChangeItemInAttackState { get; private set; }
         public bool IsChangeWeaponInAttackState {  get; private set; }
+
         Item newWeapon;
 
         [Inject]
@@ -33,10 +35,15 @@ namespace HTP.Units
 
         protected override void Start()
         {
+            UnitStateUI = UnitsInfoUI.PlayerInfo.UnitStateUI;
+
             base.Start();
             UnitHealth.Initialize(UnitSO, UnitsInfoUI.PlayerInfo);
+
             UnitsInfoUI.PlayerInfo.NameText.text = UnitSO.Id;
             _deadState = new DeadState(StateMachine);
+            
+
             ChangeItemInPreparationState = 
                 new ChangeItemInPreparationState(StateMachine);
             ChangeItemInAttackState =
@@ -108,8 +115,6 @@ namespace HTP.Units
                     }
                     
                 }
-                //StateMachine.WaitAndAction(2, ActivatePreparationState);
-                //ActivatePreparationState();
             }
             else
             {
@@ -146,12 +151,6 @@ namespace HTP.Units
 
         public void OnEndAttackAnimation()
         {
-            //if (IsChangeWeaponInAttackState)
-            //{
-            //    HandItem = newWeapon;
-            //    StateMachine.ChangeState(_changeItemInAttackState);
-            //    IsChangeWeaponInAttackState  = false;
-            //}
         }
 
         public void ChangeWeapon()

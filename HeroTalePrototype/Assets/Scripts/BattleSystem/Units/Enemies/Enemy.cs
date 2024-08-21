@@ -13,11 +13,16 @@ namespace HTP.Units
         UnitInfoUI _enemyInfoUI;
         protected override void Start()
         {
+            _enemyInfoUI = UnitsInfoUI.EnemyInfo;
+            UnitStateUI = _enemyInfoUI.UnitStateUI;
+
             base.Start();
             UnitHealth.Initialize(UnitSO, UnitsInfoUI.EnemyInfo);
-            _enemyInfoUI = UnitsInfoUI.EnemyInfo;
+            
             _enemyInfoUI.gameObject.SetActive(true);
             _enemyInfoUI.NameText.text = UnitSO.Id;
+            
+
             StateMachine.ChangeState(BattlePreparationState);
         }
 
@@ -44,6 +49,8 @@ namespace HTP.Units
             base.OnDeadAnimation();
 
             BattleService.OnEnemyDead();
+
+            _enemyInfoUI.gameObject.SetActive(false);
         }
 
 
