@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: Orc
   _hp: 217
-  _armor: 1
-  _strength: 4.27
+  _armor: 2.24
+  _strength: 12.3
   _preparationTime: 2.8
-  _spawnChance: 100
-  _unitPrefab: {fileID: 0}
+  _spawnChance: 26
   Weapon: {fileID: 11400000, guid: d551bdcbbaff24b4d86e2f1c3a410cbc, type: 2}

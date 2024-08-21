@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace HTP.Units
@@ -16,7 +15,6 @@ namespace HTP.Units
         [Range(0, 100)]
         [SerializeField] private float _spawnChance = 20;
 
-        [SerializeField] private GameObject _unitPrefab;
 
         public string Id => _id;
         public int HP => _hp;
@@ -25,6 +23,5 @@ namespace HTP.Units
         public float PreparationTime => _preparationTime;
         
         public float SpawnChance => _spawnChance;
-        public GameObject UnitPrefab => _unitPrefab;
     }
 }

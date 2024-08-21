@@ -8,11 +8,12 @@ namespace UI.StateUI
 {
     public class UnitInfoUI : MonoBehaviour
     {
-        const float c_healthValueSpeed = 100f;
+        const float c_healthValueSpeed = 10f;
         [SerializeField] private TextMeshProUGUI _nameText;
         [SerializeField] private Slider _healthSlider;
         [SerializeField] private StateUI _unitStateUI;
         [SerializeField] private Image _unitScreenPosition;
+        [SerializeField] private TextMeshProUGUI _healthText;
         public TextMeshProUGUI NameText => _nameText;
         public Slider HealthSlider => _healthSlider;
         public StateUI UnitStateUI => _unitStateUI;
@@ -35,6 +36,7 @@ namespace UI.StateUI
         {
             HealthSlider.value = Mathf.Lerp(HealthSlider.value,
                 _healthValue, Time.deltaTime * c_healthValueSpeed);
+            _healthText.text = Mathf.RoundToInt(_healthValue).ToString();
         }
 
     }

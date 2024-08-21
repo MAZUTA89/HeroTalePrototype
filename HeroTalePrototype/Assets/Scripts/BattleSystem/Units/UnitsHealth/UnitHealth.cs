@@ -27,6 +27,10 @@ namespace HTP.Units
                 {
                     _currentHealth = 0;
                 }
+                if(_currentHealth >= _maxHealth)
+                {
+                    _currentHealth = _maxHealth;
+                }
             }
         }
         float _currentHealth;
@@ -43,7 +47,7 @@ namespace HTP.Units
             Health = _maxHealth;
             _unitInfoUI = unitInfoUI;
             unitInfoUI.HealthSlider.maxValue = _maxHealth;
-            unitInfoUI.HealthSlider.minValue = 0f;
+            unitInfoUI.HealthSlider.minValue = 1f;
             unitInfoUI.SetHealthValue(Health);
         }
 

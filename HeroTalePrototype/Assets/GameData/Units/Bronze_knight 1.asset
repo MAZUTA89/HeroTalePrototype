@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: Bronze knight
   _hp: 140
-  _armor: 2
-  _strength: 11.55
+  _armor: 10
+  _strength: 17.8
   _preparationTime: 2
-  _unitPrefab: {fileID: 0}
+  _spawnChance: 17.2
   Weapon: {fileID: 11400000, guid: c296ad7f95b9ba54bb1a92fe6b2ea18e, type: 2}

@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+
 
 namespace HTP.Units
 {
@@ -12,7 +10,6 @@ namespace HTP.Units
         float Strength { get; }
         float PreparationTime { get; }
         float SpawnChance { get; }
-        GameObject UnitPrefab { get; }
     }
 }
 

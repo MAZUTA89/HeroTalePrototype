@@ -50,14 +50,6 @@ namespace HTP.Units
                 new ChangeItemInAttackState(StateMachine);
             StateAttack = new PlayerAttackState(StateMachine);
         }
-        protected override void Update()
-        {
-            base.Update();
-            //if(BattleService.IsBattleHasStarted)
-            //{
-            //    base.Update();
-            //}
-        }
 
         public void ActivatePreparationState()
         {

@@ -16,6 +16,8 @@ namespace HTP.Units
             _enemyInfoUI = UnitsInfoUI.EnemyInfo;
             UnitStateUI = _enemyInfoUI.UnitStateUI;
 
+            HandItem = _enemyUnitSO.Weapon;
+
             base.Start();
             UnitHealth.Initialize(UnitSO, UnitsInfoUI.EnemyInfo);
             
@@ -41,7 +43,15 @@ namespace HTP.Units
             base.OnDealDamage();
 
             //Player.UnitHealth.TakeDamage(_unitSO.Weapon.Damage);
-            Player.TakeDamage(_enemyUnitSO.Weapon.Damage);
+            if(Item is WeaponSO weapon)
+            {
+                Player.TakeDamage(GetDamage(weapon.Damage));
+            }
+            if (Player.UnitHealth.IsAlive == false)
+            {
+                _enemyInfoUI.gameObject.SetActive(false);
+                UnitStateUI.gameObject.SetActive(false);
+            }
         }
 
         public override void OnDeadAnimation()
@@ -49,13 +59,12 @@ namespace HTP.Units
             base.OnDeadAnimation();
 
             BattleService.OnEnemyDead();
-
-            _enemyInfoUI.gameObject.SetActive(false);
         }
 
 
-        private void OnDestroy()
+        protected override void OnDead()
         {
+            base.OnDead();
             
         }
 
